@@ -8,7 +8,8 @@ export const Task=(props)=>{
 
     const marker=()=>{
         console.log("Clicked on "+props.d)
-        dispatch(taskMarker(props.d));
+        // dispatch(taskMarker(props.d));
+        dispatch(marker(props.d));
     }
 
     

@@ -4,25 +4,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { dataAdder } from "../Redux/pending/actions";
 import { Task } from "./task";
 import { pendingStore } from "../Redux/pending/store";
+import { addData } from "../ReduxToolKit/todo/TaskSlice";
 
 export const Adding_Form=()=>{
 
 
-    const tasks_data=useSelector(state=>state.tasks);
+    // const tasks_data=useSelector(state=>state.tasks);
     const dispatch=useDispatch();
 
     let input_element;
     let form_element;
 
     function SubmitHandler(event){
-        dispatch(dataAdder(input_element.value));
-        // console.log(input_element.value);
+        // dispatch(dataAdder(input_element.value));
+        dispatch(addData(input_element.value));
         event.preventDefault();
-        console.log(pendingStore.getState());
+        // console.log(pendingStore.getState());
         
-        if(tasks_data==undefined){
-            return;
-        }
+        // if(tasks_data==undefined){
+        //     return;
+        // }
         
     }
 

@@ -4,9 +4,10 @@ import { Adding_Form } from './Components/Adding_form';
 import { Task } from './Components/task';
 import { Cake } from './Components/Cake';
 import { Provider } from 'react-redux';
-import store from './Redux/cake/cakeStore';
+
 import { pendingStore } from './Redux/pending/store';
 import TaskContainer from './Components/taskContainer';
+import store from './ReduxToolKit/todo/Store';
 
 function App() {
   console.log(pendingStore.getState());
@@ -15,12 +16,13 @@ function App() {
   });
 
   return (
-    <Provider store={pendingStore}>
+    <Provider store={store}>
       <div className="App">
         {/* <Cake></Cake> */}
         <Adding_Form></Adding_Form>
-        <TaskContainer type="PENDING"></TaskContainer>
-        <TaskContainer type="DONE"></TaskContainer>
+        <TaskContainer status="PENDING"></TaskContainer>
+        <TaskContainer status="DONE"></TaskContainer>
+        
       </div>
     </Provider>
     

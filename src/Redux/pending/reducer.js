@@ -1,8 +1,13 @@
 import { actions } from "./actionTypes";
 
+// export type TasksType={
+//     task_description: String;
+//     status:"pending"|"done"|"pause"|"delete";
+// }
 
 const initial_state={
-    tasks:[{task_description:"",pending:true}]
+    tasks:[]
+    // tasks:[{task_description:"",status:""}]
 }
 
 export const reducer=(state=initial_state,action)=>{
@@ -10,22 +15,22 @@ export const reducer=(state=initial_state,action)=>{
         case actions.ADD_DATA:
             return({
                 ...state,tasks:[
-                    ...state.tasks,{task_description:action.payload.data,pending:true}
+                    ...state.tasks,{task_description:action.payload.data,status:"PENDING"}
                 ]
             })
         
         case actions.MARK_AS_DONE:
             return({
-                ...state,tasks:[
+                ...state,tasks:
                     state.tasks.map(i=>{
                         
                         if(i.task_description==action.payload.data){
-                            return {...i,pending:false};
+                            return {...i,status:"DONE"};
                         }else{
                             return i;
                         }
                     })
-                ]
+                
             })
 
         default:return state;
